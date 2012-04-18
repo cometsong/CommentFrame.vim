@@ -1,0 +1,12 @@
+"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+"                   CommentFrame by bleopold <cometsong.net>                   "
+"                      Public Domain, same license as Vim.                     "
+"        see: http://vimdoc.sourceforge.net/htmldoc/uganda.html#license        "
+"                                                                              "
+" This is a simple plugin to generate fancy-looking comments/section dividers  "
+" with centered titles and append them at the current cursor position.         "
+"                                                                              "
+"   from: makesd/makecsd by Chase Venters <chase.venters@chaseventers.com>     "
+"         http://www.vim.org/scripts/script.php?script_id=3253                 "
+"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+
