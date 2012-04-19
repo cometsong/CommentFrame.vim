@@ -33,24 +33,24 @@ endfunction
 command! -nargs=+ CommentCustom :call _cmd_CommentCustom(<args>)
 
 function! _cmd_CommentJava(str)
-	call _CommentFrame('/* ', ' */', 80, '=', '=', '     ' . a:str . '     ')
+	call _CommentFrame('/*', '*/', 80, '*', ' ', '     ' . a:str . '     ')
 endfunction
-command! -nargs=+ CommentJava   :call _cmd_CommentC(<args>)
+command! -nargs=+ CommentJava :call _cmd_CommentJava(<args>)
 
 function! _cmd_CommentPlDashSpace(str)
 	call _CommentFrame('#', '#', 80, '-', ' ', '     ' . a:str . '     ')
 endfunction
-command! -nargs=+ CommentPl     :call _cmd_CommentPlDashSpace(<args>)
+command! -nargs=+ CommentPl :call _cmd_CommentPlDashSpace(<args>)
 
 function! _cmd_CommentPlEq(str)
 	call _CommentFrame('# ', ' #', 80, '=', '-', '     ' . a:str . '     ')
 endfunction
-command! -nargs=+ CommentPlEq   :call _cmd_CommentPlEq(<args>)
+command! -nargs=+ CommentPlEq :call _cmd_CommentPlEq(<args>)
 
 function! _cmd_CommentVimBlock(str)
 	call _CommentFrame('"', '"', 80, '-', ' ', '     ' . a:str . '     ')
 endfunction
-command! -nargs=+ CommentVim    :call _cmd_CommentVimBlock(<args>)
+command! -nargs=+ CommentVim :call _cmd_CommentVimBlock(<args>)
 
 function! _cmd_CommentVimHeader(str)
 	call _CommentFrame('"', '"', 80, '~', ' ', '     ' . a:str . '     ')
