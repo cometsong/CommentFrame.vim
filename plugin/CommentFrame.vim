@@ -1,7 +1,5 @@
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-"                   CommentFrame by bleopold <cometsong.net>                   "
-"                      Public Domain, same license as Vim.                     "
-"        see: http://vimdoc.sourceforge.net/htmldoc/uganda.html#license        "
+"               CommentFrame by bleopold <benjamin@cometsong.net>              "
 "                                                                              "
 " This is a simple plugin to generate fancy-looking comments/section dividers  "
 " with centered titles and append them at the current cursor position.         "
@@ -10,6 +8,9 @@
 "                                                                              "
 "   from: makesd/makecsd by Chase Venters <chase.venters@chaseventers.com>     "
 "         http://www.vim.org/scripts/script.php?script_id=3253                 "
+"                                                                              "
+"                      Public Domain, same license as Vim.                     "
+"        see: http://vimdoc.sourceforge.net/htmldoc/uganda.html#license        "
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 
 function! _CommentFrame(start_line, end_line, line_width, linechar, titlelinechar, str)
@@ -44,6 +45,22 @@ endfunction
 function! _cmd_CommentFrameCustom(edge, outer, inner, width, spacing, str)
     call _CommentFrame(a:edge, a:edge, a:width, a:outer, a:inner, a:spacing . a:str . a:spacing)
 endfunction
+
+
+"------------------------------------------------------------------------------"
+"                             Plugin Menu Creation                             "
+"------------------------------------------------------------------------------"
+amenu .170.1 &Plugin.Comment&Frames.Frame\ &Custom<Tab>cfc      <Leader>cfc
+amenu .170.1 &Plugin.Comment&Frames.Frame\ Hash&Dash<Tab>cfh    <Leader>cfh
+amenu .170.1 &Plugin.Comment&Frames.Frame\ Hash&Equal<Tab>cfH   <Leader>cfH
+amenu .170.1 &Plugin.Comment&Frames.Frame\ &SlashStar<Tab>cfs   <Leader>cfs
+amenu .170.1 &Plugin.Comment&Frames.Frame\ &QuoteDash<Tab>cfq   <Leader>cfq
+amenu .170.1 &Plugin.Comment&Frames.Frame\ Quote&Tilde<Tab>cfQ  <Leader>cfQ
+amenu .170.1 &Plugin.Comment&Frames.-Rights- :
+amenu .170.1 &Plugin.Comment&Frames.Right\ &Custom<Tab>crc      <Leader>crc
+amenu .170.1 &Plugin.Comment&Frames.Right\ &Hash<Tab>crh        <Leader>crh
+amenu .170.1 &Plugin.Comment&Frames.Right\ &Slashes<Tab>crs     <Leader>crs
+amenu .170.1 &Plugin.Comment&Frames.Right\ &Quote<Tab>crq       <Leader>crq
 
 
 "------------------------------------------------------------------------------"
