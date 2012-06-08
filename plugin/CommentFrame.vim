@@ -44,14 +44,18 @@ endfunction
 function! _cmd_CommentFrameCustom(edge, outer, inner, width, spacing, str)
     call _CommentFrame(a:edge, a:edge, a:width, a:outer, a:inner, a:spacing . a:str . a:spacing)
 endfunction
-command! -nargs=+ CommentFrameCustom :call _cmd_CommentFrameCustom(<args>)
- noremap <Leader>cfc      :CommentFrameCustom '#','=','-','80','     ',''<Left>
-inoremap <Leader>cfc <C-C>:CommentFrameCustom '#','=','-','80','     ',''<Left>
 
 
 "------------------------------------------------------------------------------"
 "                   Commands, Mappings of Multiple Lang Types                  "
 "------------------------------------------------------------------------------"
+command! -nargs=+ CommentFrameCustom :call _cmd_CommentFrameCustom(<args>)
+ noremap <Leader>cfc      :CommentFrameCustom '#','=','-','80','     ',''<Left>
+inoremap <Leader>cfc <C-C>:CommentFrameCustom '#','=','-','80','     ',''<Left>
+
+" CommentRightCustom equiv hotkey
+ noremap <Leader>crc      :call _CommentRight('#', '', 80, 5, '~', '')<Left><Left>
+inoremap <Leader>crc <C-C>:call _CommentRight('#', '', 80, 5, '~', '')<Left><Left>
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Languages, CommentFrame ~~~~~
 function! _cmd_CommentFrameSlashStar(str)
