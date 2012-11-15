@@ -13,6 +13,7 @@
 "        see: http://vimdoc.sourceforge.net/htmldoc/uganda.html#license        "
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 
+"--- CommentFrame function  {{{
 function! _CommentFrame(start_line, end_line, line_width, linechar, titlelinechar, str)
 	let middle_sz=a:line_width - len(a:start_line . a:end_line)
 	let mkr=a:start_line . repeat(a:linechar, middle_sz) . a:end_line
@@ -26,8 +27,9 @@ function! _CommentFrame(start_line, end_line, line_width, linechar, titlelinecha
 	call append(line('.'), title_line)
 	call append(line('.'), mkr)
 endfunction
+"}}}
 
-
+"--- CommentRight function  {{{
 function! _CommentRight(start_line, end_line, line_width, right_width, titlelinechar, str)
     let middle_sz=a:line_width - len(a:start_line . a:end_line)
     let slen=len(a:str)
@@ -39,17 +41,16 @@ function! _CommentRight(start_line, end_line, line_width, right_width, titleline
 
     call append(line('.'), title_line)
 endfunction
+"}}}
 
 
-"~~~~~~~~~~~~~~~~~~ Custom CommentFrame Function to be called by languages ~~~~~
+"~~~~~~~~~~~~~~ Custom CommentFrame Function to be called by languages {{{ ~~~~~
 function! _cmd_CommentFrameCustom(edge, outer, inner, width, spacing, str)
     call _CommentFrame(a:edge, a:edge, a:width, a:outer, a:inner, a:spacing . a:str . a:spacing)
 endfunction
+"}}}
 
-
-"------------------------------------------------------------------------------"
-"                             Plugin Menu Creation                             "
-"------------------------------------------------------------------------------"
+"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Plugin Menu Creation {{{ ~~~~~
 amenu .170.1 &Plugin.Comment&Frames.Frame\ &Custom<Tab>cfc      <Leader>cfc
 amenu .170.1 &Plugin.Comment&Frames.Frame\ Hash&Dash<Tab>cfh    <Leader>cfh
 amenu .170.1 &Plugin.Comment&Frames.Frame\ Hash&Equal<Tab>cfH   <Leader>cfH
@@ -61,11 +62,9 @@ amenu .170.1 &Plugin.Comment&Frames.Right\ &Custom<Tab>crc      <Leader>crc
 amenu .170.1 &Plugin.Comment&Frames.Right\ &Hash<Tab>crh        <Leader>crh
 amenu .170.1 &Plugin.Comment&Frames.Right\ &Slashes<Tab>crs     <Leader>crs
 amenu .170.1 &Plugin.Comment&Frames.Right\ &Quote<Tab>crq       <Leader>crq
+"}}}
 
-
-"------------------------------------------------------------------------------"
-"                   Commands, Mappings of Multiple Lang Types                  "
-"------------------------------------------------------------------------------"
+"~~~~~~~~~~~~~~~~~~~~~~~~~~~ Commands, Mappings of Multiple Lang Types {{{ ~~~~~
 command! -nargs=+ CommentFrameCustom :call _cmd_CommentFrameCustom(<args>)
  noremap <Leader>cfc      :CommentFrameCustom '#','=','-','80','     ',''<Left>
 inoremap <Leader>cfc <C-C>:CommentFrameCustom '#','=','-','80','     ',''<Left>
@@ -74,7 +73,9 @@ inoremap <Leader>cfc <C-C>:CommentFrameCustom '#','=','-','80','     ',''<Left>
  noremap <Leader>crc      :call _CommentRight('#', '', 80, 5, '~', '')<Left><Left>
 inoremap <Leader>crc <C-C>:call _CommentRight('#', '', 80, 5, '~', '')<Left><Left>
 
-"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Languages, CommentFrame ~~~~~
+"}}}
+
+"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Languages, CommentFrame {{{ ~~~~~
 function! _cmd_CommentFrameSlashStar(str)
     call _CommentFrame('/*', '*/', 80, '*', ' ', a:str)
 endfunction
@@ -110,8 +111,9 @@ command! -nargs=+ CommentQuoteTilde :call _cmd_CommentQuoteTilde(<args>)
  noremap <Leader>cfQ      :CommentQuoteTilde ''<Left>
 inoremap <Leader>cfQ <C-C>:CommentQuoteTilde ''<Left>
 
+"}}}
 
-"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Languages, CommentRight ~~~~~
+"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Languages, CommentRight {{{ ~~~~~
 function! _cmd_CommentRightHash(str)
     call _CommentRight('#', '', 80, 5, '~', a:str)
 endfunction
@@ -133,4 +135,5 @@ command! -nargs=+ CommentRightQuote :call _cmd_CommentRightQuote(<args>)
  noremap <Leader>crq      :CommentRightQuote ''<Left>
 inoremap <Leader>crq <C-C>:CommentRightQuote ''<Left>
 
+"}}}
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
