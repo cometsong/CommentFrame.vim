@@ -54,7 +54,7 @@ frames and right lines are 80 characters.
 These defaults can be unmapped, remapped or preserved, as you see fit.
 New styles and keymappings can be added using the following lines in your vimrc: 
     command! -nargs=+ CommentFrameSlashMeDown :call CommentFrame#Custom('//', '//', 80, '*', '_', 0, <args>)
-    call MapKeys('ni', 'cfs', ':CommentFrameSlashMeDown ""<Left>')
+    call CommentFrame#MapKeys('ni', 'cfs', ':CommentFrameSlashMeDown ""<Left>')
 This will create a new command and a new key mapped in modes normal (n) and
 insert (i) modes, as designeted in the first MapKeys arg, then 'cfC' as the keys
 to map, and the command to be run with that keypress, or by using the command
@@ -62,7 +62,7 @@ from the ':' command line.
 
 Below is the MapKeys call for direct access to the CommentFrameCustom 
 command, if only a keymapping is desired, not another usable command.
-    call MapKeys("n", "mykeys", ":CommentFrameCustom '!','...',80,':','>',3,''<Left>")
+    call CommentFrame#MapKeys("n", "mykeys", ":CommentFrameCustom '!','...',80,':','>',3,''<Left>")
 
 Have fun stormin the castle!
 
