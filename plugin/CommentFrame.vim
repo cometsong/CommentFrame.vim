@@ -141,6 +141,10 @@ function! CommentFrame#CustomRight(start_str, end_str, line_width,
   call s:CommentRight(a:start_str, a:end_str, a:line_width, a:right_width, 
                      \a:title_fill, a:numspaces, a:titlestring)
 endfunction
+
+function! CommentFrame#MapKeys(modes, keys, target)
+  call s:MapKeys(a:modes, a:keys, a:target)
+endfunction
 "}}}
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Commands, Mappings of Custom Functions {{{ ~~~~~
