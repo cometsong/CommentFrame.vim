@@ -1,15 +1,68 @@
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-"               CommentFrame by bleopold <benjamin@cometsong.net>              "
+"                                 CommentFrame!                                "
 "                                                                              "
-" This is a simple plugin to generate fancy-looking comments/section dividers  "
-" with centered titles and append them at the current cursor position.         "
-" Also: CommentRight => line of comment (customizable for diff langs) with     "
-"       string arg put on right end of line.                                   "
-"                                                                              "
-"   from: makesd/makecsd by Chase Venters <chase.venters@chaseventers.com>     "
-"         http://www.vim.org/scripts/script.php?script_id=3253                 "
+"                      Copyright (c) 2012 Benjamin Leopold                     "
+"                              All rights reserved.                            "
 "                                                                              "
 "                      Public Domain, same license as Vim.                     "
 "        see: http://vimdoc.sourceforge.net/htmldoc/uganda.html#license        "
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+"~~~~~~~~~~~~~~~~~~~~~~~~~~~~ by cometsong <benjamin at cometsong dot net> ~~~~~
+
+
+"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+"                                                                              "
+" This is a simple plugin to generate fancy-looking comments/section dividers  "
+" with centered titles and append them at the current cursor position.         "
+"                                                                              "
+" Also CommentRight => line of comment (customizable for diff langs) with      "
+"      string arg put on right end of line.                                    "
+"                                                                              "
+" To customize further, unmapping of default keysets can be done, plus         "
+" creating any new combinations of frame types by using the CommentFrame       "
+" Custom and CustomRight function in your vimrc.  See below for details.       "
+"                                                                              "
+" For latest developmentsi, any mods, pull requests, etc, see:                 "
+"   https://github.com/cometsong/CommentFrame.vim                              "
+"                                                                              "
+"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+"             inspired by: makesd/makecsd by Chase Venters script:             "
+"             http://www.vim.org/scripts/script.php?script_id=3253             "
+"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+
+
+Basic Usage:
+
+The default keymappings are setup for a custom function to create a CommentFrame
+and also a CommentRight line.  All keymapping start with <Leader>, all default
+frames and right lines are 80 characters.
+
+    Key     Command Name                Result
+    ---     --------------------------  ----------------------------------------
+    cfs     CommentFrameSlashes         border: //****************************//
+    cfS     CommentFrameSlashStar       border: /******************************/
+    cfh     CommentFrameHashDash        border: #------------------------------#
+    cfH     CommentFrameHashEqual       border: #==============================#
+    cfq     CommentFrameQuoteDash       border: "------------------------------"
+    cfQ     CommentFrameQuoteTilde      border: "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+
+    crh     CommentRightHash            line: #~~~~~~~~~~~~~~~~~~~~~ title ~~~~~
+    crs     CommentRightSlashes         line: //~~~~~~~~~~~~~~~~~~~~ title ~~~~~
+    crS     CommentRightSlashStar       line: /*~~~~~~~~~~~~~~~~~~ title ~~~~~*/
+    crq     CommentRightQuote           line: "~~~~~~~~~~~~~~~~~~~~~ title ~~~~~
+
+These defaults can be unmapped, remapped or preserved, as you see fit.
+New styles and keymappings can be added using the following lines in your vimrc: 
+    command! -nargs=+ CommentFrameSlashMeDown :call CommentFrame#Custom('//', '//', 80, '*', '_', 0, <args>)
+    call MapKeys('ni', 'cfs', ':CommentFrameSlashMeDown ""<Left>')
+This will create a new command and a new key mapped in modes normal (n) and
+insert (i) modes, as designeted in the first MapKeys arg, then 'cfC' as the keys
+to map, and the command to be run with that keypress, or by using the command
+from the ':' command line.
+
+Below is the MapKeys call for direct access to the CommentFrameCustom 
+command, if only a keymapping is desired, not another usable command.
+    call MapKeys("n", "mykeys", ":CommentFrameCustom '!','...',80,':','>',3,''<Left>")
+
+Have fun stormin the castle!
 
