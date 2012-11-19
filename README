@@ -22,7 +22,7 @@
 " creating any new combinations of frame types by using the CommentFrame       "
 " Custom and CustomRight function in your vimrc.  See below for details.       "
 "                                                                              "
-" For latest developmentsi, any mods, pull requests, etc, see:                 "
+" For latest developments, any mods, pull requests, etc, see:                  "
 "   https://github.com/cometsong/CommentFrame.vim                              "
 "                                                                              "
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
