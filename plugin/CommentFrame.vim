@@ -121,7 +121,7 @@ function! s:MapKeys(modes, keys, target)
     endif
   endfor
 endfunction
-" usage:  call MapKeys('nvi', 'do', 'doStuff')
+" usage:  call s:MapKeys('nvi', 'do', 'doStuff')
 "}}}
 
 
@@ -149,46 +149,46 @@ endfunction
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Commands, Mappings of Custom Functions {{{ ~~~~~
 command! -nargs=+ CommentFrameCustom :call CommentFrame#Custom(<args>)
-call MapKeys("ni", "cfc", ":CommentFrameCustom '#','#',80,'=','-',3,''<Left>")
+call s:MapKeys("ni", "cfc", ":CommentFrameCustom '#','#',80,'=','-',3,''<Left>")
 
 command! -nargs=+ CommentRightCustom :call CommentFrame#CustomRight(<args>)
-call MapKeys("ni", "crc", ":CommentRightCustom '#','',80,5,'~',1,''<Left>")
+call s:MapKeys("ni", "crc", ":CommentRightCustom '#','',80,5,'~',1,''<Left>")
 
 "}}}
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Languages, CommentFrame {{{ ~~~~~
 command! -nargs=+ CommentFrameSlashes     : call CommentFrame#Custom('//', '//', 80, '*', ' ', 0, <args>)
-call MapKeys('ni', 'cfs', ':CommentFrameSlashes ""<Left>')
+call s:MapKeys('ni', 'cfs', ':CommentFrameSlashes ""<Left>')
 
 command! -nargs=+ CommentFrameSlashStar   : call CommentFrame#Custom('/*', '*/', 80, '*', ' ', 0, <args>)
-call MapKeys('ni', 'cfS', ':CommentFrameSlashStar ""<Left>')
+call s:MapKeys('ni', 'cfS', ':CommentFrameSlashStar ""<Left>')
 
 command! -nargs=+ CommentFrameHashDash    : call CommentFrame#Custom('#', '#', 80, '-', ' ', 0, <args>)
-call MapKeys('ni', 'cfh', ':CommentFrameHashDash ""<Left>')
+call s:MapKeys('ni', 'cfh', ':CommentFrameHashDash ""<Left>')
 
 command! -nargs=+ CommentFrameHashEqual   : call CommentFrame#Custom('#', '#', 80, '=', '-', 5, <args>)
-call MapKeys('ni', 'cfH', ':CommentFrameHashEqual ""<Left>')
+call s:MapKeys('ni', 'cfH', ':CommentFrameHashEqual ""<Left>')
 
 command! -nargs=+ CommentFrameQuoteDash   : call CommentFrame#Custom('"', '"', 80, '-', ' ', 5, <args>)
-call MapKeys('ni', 'cfq', ':CommentFrameQuoteDash ""<Left>')
+call s:MapKeys('ni', 'cfq', ':CommentFrameQuoteDash ""<Left>')
 
 command! -nargs=+ CommentFrameQuoteTilde  : call CommentFrame#Custom('"', '"', 80, '~', ' ', 5, <args>)
-call MapKeys('ni', 'cfQ', ':CommentFrameQuoteTilde ""<Left>')
+call s:MapKeys('ni', 'cfQ', ':CommentFrameQuoteTilde ""<Left>')
 
 "}}}
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Languages, CommentRight {{{ ~~~~~
 command! -nargs=+ CommentRightHash      : call CommentFrame#CustomRight('#', '', 80, 5, '~', 1, <args>)
-call MapKeys('ni', 'crh', ':CommentRightHash ""<Left>')
+call s:MapKeys('ni', 'crh', ':CommentRightHash ""<Left>')
 
 command! -nargs=+ CommentRightSlashes   : call CommentFrame#CustomRight('//', '', 80, 5, '~', 1, <args>)
-call MapKeys('ni', 'crs', ':CommentRightSlashes ""<Left>')
+call s:MapKeys('ni', 'crs', ':CommentRightSlashes ""<Left>')
 
 command! -nargs=+ CommentRightSlashStar : call CommentFrame#CustomRight('/*', '*/', 80, 5, '~', 1, <args>)
-call MapKeys('ni', 'crS', ':CommentRightSlashStar ""<Left>')
+call s:MapKeys('ni', 'crS', ':CommentRightSlashStar ""<Left>')
 
 command! -nargs=+ CommentRightQuote     : call CommentFrame#CustomRight('"', '', 80, 5, '~', 1, <args>)
-call MapKeys('ni', 'crq', ':CommentRightQuote ""<Left>')
+call s:MapKeys('ni', 'crq', ':CommentRightQuote ""<Left>')
 
 "}}}
 
