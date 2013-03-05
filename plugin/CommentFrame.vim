@@ -149,62 +149,62 @@ endfunction
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Commands, Mappings of Custom Functions {{{ ~~~~~
 command! -nargs=+ CommentFrameCustom :call CommentFrame#Custom(<args>)
-call s:MapKeys("ni", "cfc", ":CommentFrameCustom '#','#',80,'=','-',3,''<Left>")
+call s:MapKeys("ni", "fcu", ":CommentFrameCustom '#','#',80,'=','-',3,''<Left>")
 
 command! -nargs=+ CommentRightCustom :call CommentFrame#CustomRight(<args>)
-call s:MapKeys("ni", "crc", ":CommentRightCustom '#','',80,5,'~',1,''<Left>")
+call s:MapKeys("ni", "frc", ":CommentRightCustom '#','',80,5,'~',1,''<Left>")
 
 "}}}
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Languages, CommentFrame {{{ ~~~~~
 command! -nargs=+ CommentFrameSlashes     : call CommentFrame#Custom('//', '//', 80, '*', ' ', 0, <args>)
-call s:MapKeys('ni', 'cfs', ':CommentFrameSlashes ""<Left>')
+call s:MapKeys('ni', 'fcs', ':CommentFrameSlashes ""<Left>')
 
 command! -nargs=+ CommentFrameSlashStar   : call CommentFrame#Custom('/*', '*/', 80, '*', ' ', 0, <args>)
-call s:MapKeys('ni', 'cfS', ':CommentFrameSlashStar ""<Left>')
+call s:MapKeys('ni', 'fcS', ':CommentFrameSlashStar ""<Left>')
 
 command! -nargs=+ CommentFrameHashDash    : call CommentFrame#Custom('#', '#', 80, '-', ' ', 0, <args>)
-call s:MapKeys('ni', 'cfh', ':CommentFrameHashDash ""<Left>')
+call s:MapKeys('ni', 'fch', ':CommentFrameHashDash ""<Left>')
 
 command! -nargs=+ CommentFrameHashEqual   : call CommentFrame#Custom('#', '#', 80, '=', '-', 5, <args>)
-call s:MapKeys('ni', 'cfH', ':CommentFrameHashEqual ""<Left>')
+call s:MapKeys('ni', 'fcH', ':CommentFrameHashEqual ""<Left>')
 
 command! -nargs=+ CommentFrameQuoteDash   : call CommentFrame#Custom('"', '"', 80, '-', ' ', 5, <args>)
-call s:MapKeys('ni', 'cfq', ':CommentFrameQuoteDash ""<Left>')
+call s:MapKeys('ni', 'fcq', ':CommentFrameQuoteDash ""<Left>')
 
 command! -nargs=+ CommentFrameQuoteTilde  : call CommentFrame#Custom('"', '"', 80, '~', ' ', 5, <args>)
-call s:MapKeys('ni', 'cfQ', ':CommentFrameQuoteTilde ""<Left>')
+call s:MapKeys('ni', 'fcQ', ':CommentFrameQuoteTilde ""<Left>')
 
 "}}}
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Languages, CommentRight {{{ ~~~~~
 command! -nargs=+ CommentRightHash      : call CommentFrame#CustomRight('#', '', 80, 5, '~', 1, <args>)
-call s:MapKeys('ni', 'crh', ':CommentRightHash ""<Left>')
+call s:MapKeys('ni', 'frh', ':CommentRightHash ""<Left>')
 
 command! -nargs=+ CommentRightSlashes   : call CommentFrame#CustomRight('//', '', 80, 5, '~', 1, <args>)
-call s:MapKeys('ni', 'crs', ':CommentRightSlashes ""<Left>')
+call s:MapKeys('ni', 'frs', ':CommentRightSlashes ""<Left>')
 
 command! -nargs=+ CommentRightSlashStar : call CommentFrame#CustomRight('/*', '*/', 80, 5, '~', 1, <args>)
-call s:MapKeys('ni', 'crS', ':CommentRightSlashStar ""<Left>')
+call s:MapKeys('ni', 'frS', ':CommentRightSlashStar ""<Left>')
 
 command! -nargs=+ CommentRightQuote     : call CommentFrame#CustomRight('"', '', 80, 5, '~', 1, <args>)
-call s:MapKeys('ni', 'crq', ':CommentRightQuote ""<Left>')
+call s:MapKeys('ni', 'frq', ':CommentRightQuote ""<Left>')
 
 "}}}
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Plugin Menu Creation {{{ ~~~~~
-amenu .170.1 &Plugin.Comment&Frames.Frame\ &Custom<Tab>cfc          <Leader>cfc
-amenu .170.1 &Plugin.Comment&Frames.Frame\ &HashDash<Tab>cfh        <Leader>cfh
-amenu .170.1 &Plugin.Comment&Frames.Frame\ Hash&Equal<Tab>cfH       <Leader>cfH
-amenu .170.1 &Plugin.Comment&Frames.Frame\ &Slashes<Tab>cfs         <Leader>cfs
-amenu .170.1 &Plugin.Comment&Frames.Frame\ &Slash\ Star<Tab>cfs     <Leader>cfS
-amenu .170.1 &Plugin.Comment&Frames.Frame\ &QuoteDash<Tab>cfq       <Leader>cfq
-amenu .170.1 &Plugin.Comment&Frames.Frame\ Quote&Tilde<Tab>cfQ      <Leader>cfQ
+amenu .170.1 &Plugin.Comment&Frames.Frame\ &Custom<Tab>fcu          <Leader>fcu
+amenu .170.1 &Plugin.Comment&Frames.Frame\ &HashDash<Tab>fch        <Leader>fch
+amenu .170.1 &Plugin.Comment&Frames.Frame\ Hash&Equal<Tab>fcH       <Leader>fcH
+amenu .170.1 &Plugin.Comment&Frames.Frame\ &Slashes<Tab>fcs         <Leader>fcs
+amenu .170.1 &Plugin.Comment&Frames.Frame\ &Slash\ Star<Tab>fcs     <Leader>fcS
+amenu .170.1 &Plugin.Comment&Frames.Frame\ &QuoteDash<Tab>fcq       <Leader>fcq
+amenu .170.1 &Plugin.Comment&Frames.Frame\ Quote&Tilde<Tab>fcQ      <Leader>fcQ
 amenu .170.1 &Plugin.Comment&Frames.-Rights- :
-amenu .170.1 &Plugin.Comment&Frames.Right\ &Custom<Tab>crc          <Leader>crc
-amenu .170.1 &Plugin.Comment&Frames.Right\ &Hash<Tab>crh            <Leader>crh
-amenu .170.1 &Plugin.Comment&Frames.Right\ &Slashes<Tab>crs         <Leader>crs
-amenu .170.1 &Plugin.Comment&Frames.Right\ &Slash\ Stars<Tab>crS    <Leader>crS
-amenu .170.1 &Plugin.Comment&Frames.Right\ &Quote<Tab>crq           <Leader>crq
+amenu .170.1 &Plugin.Comment&Frames.Right\ &Custom<Tab>frc          <Leader>frc
+amenu .170.1 &Plugin.Comment&Frames.Right\ &Hash<Tab>frh            <Leader>frh
+amenu .170.1 &Plugin.Comment&Frames.Right\ &Slashes<Tab>frs         <Leader>frs
+amenu .170.1 &Plugin.Comment&Frames.Right\ &Slash\ Stars<Tab>frS    <Leader>frS
+amenu .170.1 &Plugin.Comment&Frames.Right\ &Quote<Tab>frq           <Leader>frq
 "}}}
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~}}}

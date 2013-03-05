@@ -39,17 +39,17 @@ frames and right lines are 80 characters.
 
     Key     Command Name                Result
     ---     --------------------------  ----------------------------------------
-    cfs     CommentFrameSlashes         border: //****************************//
-    cfS     CommentFrameSlashStar       border: /******************************/
-    cfh     CommentFrameHashDash        border: #------------------------------#
-    cfH     CommentFrameHashEqual       border: #==============================#
-    cfq     CommentFrameQuoteDash       border: "------------------------------"
-    cfQ     CommentFrameQuoteTilde      border: "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+    fcs     CommentFrameSlashes         border: //****************************//
+    fcS     CommentFrameSlashStar       border: /******************************/
+    fch     CommentFrameHashDash        border: #------------------------------#
+    fcH     CommentFrameHashEqual       border: #==============================#
+    fcq     CommentFrameQuoteDash       border: "------------------------------"
+    fcQ     CommentFrameQuoteTilde      border: "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 
-    crh     CommentRightHash            line: #~~~~~~~~~~~~~~~~~~~~~ title ~~~~~
-    crs     CommentRightSlashes         line: //~~~~~~~~~~~~~~~~~~~~ title ~~~~~
-    crS     CommentRightSlashStar       line: /*~~~~~~~~~~~~~~~~~~ title ~~~~~*/
-    crq     CommentRightQuote           line: "~~~~~~~~~~~~~~~~~~~~~ title ~~~~~
+    frh     CommentRightHash            line: #~~~~~~~~~~~~~~~~~~~~~ title ~~~~~
+    frs     CommentRightSlashes         line: //~~~~~~~~~~~~~~~~~~~~ title ~~~~~
+    frS     CommentRightSlashStar       line: /*~~~~~~~~~~~~~~~~~~ title ~~~~~*/
+    frq     CommentRightQuote           line: "~~~~~~~~~~~~~~~~~~~~~ title ~~~~~
 
 These defaults can be unmapped, remapped or preserved, as you see fit.
 New styles and keymappings can be added using the following lines in your vimrc: 
