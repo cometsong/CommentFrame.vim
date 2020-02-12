@@ -1,29 +1,10 @@
-"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{{{"
+"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 "                                 CommentFrame!                                "
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-"~~~~~~~~~~~~~~~~~~~~~~~~~~~~ by cometsong <benjamin at cometsong dot net> ~~~~~
-
-
-"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-" This is a simple plugin to generate fancy-looking comments/section dividers  "
-" with centered titles and append them at the current cursor position.         "
-"                                                                              "
-" Also CommentRight => line of comment (customizable for diff langs) with      "
-"      string arg put on right end of line.                                    "
-"                                                                              "
-" To customize further, unmapping of default keysets can be done, plus         "
-" creating any new combinations of frame types by using the CommentFrame       "
-" Custom and CustomRight function in your vimrc.
-"                                                                              "
-"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~}}}"
-
-"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{{{"
-"   from: makesd/makecsd by Chase Venters <chase.venters@chaseventers.com>     "
-"         http://www.vim.org/scripts/script.php?script_id=3253                 "
-"                                                                              "
 "                      Public Domain, same license as Vim.                     "
 "        see: http://vimdoc.sourceforge.net/htmldoc/uganda.html#license        "
-"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~}}}"
+"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+"~~~~~~~~~~~~~~~~ Copyright 2012 cometsong <benjamin at cometsong dot net> ~~~~"
 
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
@@ -125,10 +106,18 @@ endfunction
 "}}}
 
 
-
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 "                               General Use Setup                           {{{"
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+
+"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Plugin Config {{{ ~~~~~
+" Do they want to skip our default mappings?
+let s:domaps = v:true
+if exists('g:CommentFrame_SkipDefaultMappings')
+  let s:domaps = v:false
+endif
+""}}}
+
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Custom Comment Functions {{{ ~~~~~
 function! CommentFrame#Custom(start_str, end_str, line_width, 
                      \frame_fill, title_fill, numspaces, titlestring)
@@ -149,46 +138,46 @@ endfunction
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Commands, Mappings of Custom Functions {{{ ~~~~~
 command! -nargs=+ CommentFrameCustom :call CommentFrame#Custom(<args>)
-call s:MapKeys("ni", "fcu", ":CommentFrameCustom '#','#',80,'=','-',3,''<Left>")
+if s:domaps|call s:MapKeys("ni", "fcu", ":CommentFrameCustom '#','#',80,'=','-',3,''<Left>")|endif
 
 command! -nargs=+ CommentRightCustom :call CommentFrame#CustomRight(<args>)
-call s:MapKeys("ni", "frc", ":CommentRightCustom '#','',80,5,'~',1,''<Left>")
+if s:domaps|call s:MapKeys("ni", "frc", ":CommentRightCustom '#','',80,5,'~',1,''<Left>")|endif
 
 "}}}
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Languages, CommentFrame {{{ ~~~~~
 command! -nargs=+ CommentFrameSlashes     : call CommentFrame#Custom('//', '//', 80, '*', ' ', 0, <args>)
-call s:MapKeys('ni', 'fcs', ':CommentFrameSlashes ""<Left>')
+if s:domaps|call s:MapKeys('ni', 'fcs', ':CommentFrameSlashes ""<Left>')|endif
 
 command! -nargs=+ CommentFrameSlashStar   : call CommentFrame#Custom('/*', '*/', 80, '*', ' ', 0, <args>)
-call s:MapKeys('ni', 'fcS', ':CommentFrameSlashStar ""<Left>')
+if s:domaps|call s:MapKeys('ni', 'fcS', ':CommentFrameSlashStar ""<Left>')|endif
 
 command! -nargs=+ CommentFrameHashDash    : call CommentFrame#Custom('#', '#', 80, '-', ' ', 0, <args>)
-call s:MapKeys('ni', 'fch', ':CommentFrameHashDash ""<Left>')
+if s:domaps|call s:MapKeys('ni', 'fch', ':CommentFrameHashDash ""<Left>')|endif
 
 command! -nargs=+ CommentFrameHashEqual   : call CommentFrame#Custom('#', '#', 80, '=', '-', 5, <args>)
-call s:MapKeys('ni', 'fcH', ':CommentFrameHashEqual ""<Left>')
+if s:domaps|call s:MapKeys('ni', 'fcH', ':CommentFrameHashEqual ""<Left>')|endif
 
 command! -nargs=+ CommentFrameQuoteDash   : call CommentFrame#Custom('"', '"', 80, '-', ' ', 5, <args>)
-call s:MapKeys('ni', 'fcq', ':CommentFrameQuoteDash ""<Left>')
+if s:domaps|call s:MapKeys('ni', 'fcq', ':CommentFrameQuoteDash ""<Left>')|endif
 
 command! -nargs=+ CommentFrameQuoteTilde  : call CommentFrame#Custom('"', '"', 80, '~', ' ', 5, <args>)
-call s:MapKeys('ni', 'fcQ', ':CommentFrameQuoteTilde ""<Left>')
+if s:domaps|call s:MapKeys('ni', 'fcQ', ':CommentFrameQuoteTilde ""<Left>')|endif
 
 "}}}
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Languages, CommentRight {{{ ~~~~~
 command! -nargs=+ CommentRightHash      : call CommentFrame#CustomRight('#', '', 80, 5, '~', 1, <args>)
-call s:MapKeys('ni', 'frh', ':CommentRightHash ""<Left>')
+if s:domaps|call s:MapKeys('ni', 'frh', ':CommentRightHash ""<Left>')|endif
 
 command! -nargs=+ CommentRightSlashes   : call CommentFrame#CustomRight('//', '', 80, 5, '~', 1, <args>)
-call s:MapKeys('ni', 'frs', ':CommentRightSlashes ""<Left>')
+if s:domaps|call s:MapKeys('ni', 'frs', ':CommentRightSlashes ""<Left>')|endif
 
 command! -nargs=+ CommentRightSlashStar : call CommentFrame#CustomRight('/*', '*/', 80, 5, '~', 1, <args>)
-call s:MapKeys('ni', 'frS', ':CommentRightSlashStar ""<Left>')
+if s:domaps|call s:MapKeys('ni', 'frS', ':CommentRightSlashStar ""<Left>')|endif
 
 command! -nargs=+ CommentRightQuote     : call CommentFrame#CustomRight('"', '', 80, 5, '~', 1, <args>)
-call s:MapKeys('ni', 'frq', ':CommentRightQuote ""<Left>')
+if s:domaps|call s:MapKeys('ni', 'frq', ':CommentRightQuote ""<Left>')|endif
 
 "}}}
 

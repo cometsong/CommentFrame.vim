@@ -19,8 +19,9 @@
 "      string arg put on right end of line.                                    "
 "                                                                              "
 " To customize further, unmapping of default keysets can be done, plus         "
-" creating any new combinations of frame types by using the CommentFrame       "
-" Custom and CustomRight function in your vimrc.  See below for details.       "
+" creating any new combinations of frame types by using the custom             "
+" CommentFrameCustom and CommentRightCustom functions in your vimrc.           "
+" See below for details.                                                       "
 "                                                                              "
 " For latest developments, any mods, pull requests, etc, see:                  "
 "   https://github.com/cometsong/CommentFrame.vim                              "
@@ -30,6 +31,8 @@
 "             http://www.vim.org/scripts/script.php?script_id=3253             "
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 
+Plugin Configuration:
+  `g:CommentFrame_SkipDefaultMappings`        let =1 to not use default keymaps
 
 Basic Usage:
 
@@ -51,7 +54,9 @@ frames and right lines are 80 characters.
     frS     CommentRightSlashStar       line: /*~~~~~~~~~~~~~~~~~~ title ~~~~~*/
     frq     CommentRightQuote           line: "~~~~~~~~~~~~~~~~~~~~~ title ~~~~~
 
-These defaults can be unmapped, remapped or preserved, as you see fit.
+These defaults can be unmapped, remapped or preserved, as you see fit or can be
+not mapped at all using the config variable mentioned above.
+
 New styles and keymappings can be added using the following lines in your vimrc: 
     command! -nargs=+ CommentFrameSlashMeDown :call CommentFrame#Custom('//', '//', 80, '*', '_', 0, <args>)
     call CommentFrame#MapKeys('ni', 'cfs', ':CommentFrameSlashMeDown ""<Left>')
