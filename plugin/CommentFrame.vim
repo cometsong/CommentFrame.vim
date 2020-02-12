@@ -116,6 +116,13 @@ let s:domaps = v:true
 if exists('g:CommentFrame_SkipDefaultMappings')
   let s:domaps = v:false
 endif
+
+" config to set width of comment lines
+let s:fw = 80
+if exists('g:CommentFrame_TextWidth')
+  let s:fw = g:CommentFrame_TextWidth
+endif
+
 ""}}}
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Custom Comment Functions {{{ ~~~~~
@@ -138,52 +145,51 @@ endfunction
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Commands, Mappings of Custom Functions {{{ ~~~~~
 command! -nargs=+ CommentFrameCustom :call CommentFrame#Custom(<args>)
-if s:domaps|call s:MapKeys("ni", "fcu", ":CommentFrameCustom '#','#',80,'=','-',3,''<Left>")|endif
+if s:domaps|call s:MapKeys("ni", "fcu", ":CommentFrameCustom '#','#',s:fw,'=','-',3,''<Left>")|endif
 
 command! -nargs=+ CommentRightCustom :call CommentFrame#CustomRight(<args>)
-if s:domaps|call s:MapKeys("ni", "frc", ":CommentRightCustom '#','',80,5,'~',1,''<Left>")|endif
+if s:domaps|call s:MapKeys("ni", "frc", ":CommentRightCustom '#','',s:fw,5,'~',1,''<Left>")|endif
 
 "}}}
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Languages, CommentFrame {{{ ~~~~~
-command! -nargs=+ CommentFrameSlashes     : call CommentFrame#Custom('//', '//', 80, '*', ' ', 0, <args>)
+command! -nargs=+ CommentFrameSlashes     : call CommentFrame#Custom('//', '//', s:fw, '*', ' ', 0, <args>)
 if s:domaps|call s:MapKeys('ni', 'fcs', ':CommentFrameSlashes ""<Left>')|endif
 
-command! -nargs=+ CommentFrameSlashStar   : call CommentFrame#Custom('/*', '*/', 80, '*', ' ', 0, <args>)
+command! -nargs=+ CommentFrameSlashStar   : call CommentFrame#Custom('/*', '*/', s:fw, '*', ' ', 0, <args>)
 if s:domaps|call s:MapKeys('ni', 'fcS', ':CommentFrameSlashStar ""<Left>')|endif
 
-command! -nargs=+ CommentFrameHashDash    : call CommentFrame#Custom('#', '#', 80, '-', ' ', 0, <args>)
+command! -nargs=+ CommentFrameHashDash    : call CommentFrame#Custom('#', '#', s:fw, '-', ' ', 0, <args>)
 if s:domaps|call s:MapKeys('ni', 'fch', ':CommentFrameHashDash ""<Left>')|endif
 
-command! -nargs=+ CommentFrameHashEqual   : call CommentFrame#Custom('#', '#', 80, '=', '-', 5, <args>)
+command! -nargs=+ CommentFrameHashEqual   : call CommentFrame#Custom('#', '#', s:fw, '=', '-', 5, <args>)
 if s:domaps|call s:MapKeys('ni', 'fcH', ':CommentFrameHashEqual ""<Left>')|endif
 
-command! -nargs=+ CommentFrameQuoteDash   : call CommentFrame#Custom('"', '"', 80, '-', ' ', 5, <args>)
+command! -nargs=+ CommentFrameQuoteDash   : call CommentFrame#Custom('"', '"', s:fw, '-', ' ', 5, <args>)
 if s:domaps|call s:MapKeys('ni', 'fcq', ':CommentFrameQuoteDash ""<Left>')|endif
 
-command! -nargs=+ CommentFrameQuoteTilde  : call CommentFrame#Custom('"', '"', 80, '~', ' ', 5, <args>)
+command! -nargs=+ CommentFrameQuoteTilde  : call CommentFrame#Custom('"', '"', s:fw, '~', ' ', 5, <args>)
 if s:domaps|call s:MapKeys('ni', 'fcQ', ':CommentFrameQuoteTilde ""<Left>')|endif
 
 "}}}
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Languages, CommentRight {{{ ~~~~~
-command! -nargs=+ CommentRightHash      : call CommentFrame#CustomRight('#', '', 80, 5, '~', 1, <args>)
+command! -nargs=+ CommentRightHash      : call CommentFrame#CustomRight('#', '', s:fw, 5, '~', 1, <args>)
 if s:domaps|call s:MapKeys('ni', 'frh', ':CommentRightHash ""<Left>')|endif
 
-command! -nargs=+ CommentRightSlashes   : call CommentFrame#CustomRight('//', '', 80, 5, '~', 1, <args>)
+command! -nargs=+ CommentRightSlashes   : call CommentFrame#CustomRight('//', '', s:fw, 5, '~', 1, <args>)
 if s:domaps|call s:MapKeys('ni', 'frs', ':CommentRightSlashes ""<Left>')|endif
 
-command! -nargs=+ CommentRightSlashStar : call CommentFrame#CustomRight('/*', '*/', 80, 5, '~', 1, <args>)
+command! -nargs=+ CommentRightSlashStar : call CommentFrame#CustomRight('/*', '*/', s:fw, 5, '~', 1, <args>)
 if s:domaps|call s:MapKeys('ni', 'frS', ':CommentRightSlashStar ""<Left>')|endif
 
-command! -nargs=+ CommentRightQuote     : call CommentFrame#CustomRight('"', '', 80, 5, '~', 1, <args>)
+command! -nargs=+ CommentRightQuote     : call CommentFrame#CustomRight('"', '', s:fw, 5, '~', 1, <args>)
 if s:domaps|call s:MapKeys('ni', 'frq', ':CommentRightQuote ""<Left>')|endif
 
 "}}}
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Plugin Menu Creation {{{ ~~~~~
-unmenu! Plugin.Comment&Frames.
-amenu .170.1 &Plugin.Comment&Frames.&Frame\ Custom        :CommentFrameCustom '#','#',80,'=','-',3,''<Left>
+amenu .170.1 &Plugin.Comment&Frames.&Frame\ Custom        :CommentFrameCustom '#','#',s:fw,'=','-',3,''<Left>
 amenu .170.1 &Plugin.Comment&Frames.&Frame\ Hash\ Dash    :CommentFrameHashDash ''<Left>
 amenu .170.1 &Plugin.Comment&Frames.&Frame\ Hash\ Equal   :CommentFrameHashEqual ''<Left>
 amenu .170.1 &Plugin.Comment&Frames.&Frame\ Slashes       :CommentFrameSlashes ''<Left>
@@ -191,7 +197,7 @@ amenu .170.1 &Plugin.Comment&Frames.&Frame\ Slash\ Star   :CommentFrameSlashStar
 amenu .170.1 &Plugin.Comment&Frames.&Frame\ Quote\ Dash   :CommentFrameQuoteDash ''<Left>
 amenu .170.1 &Plugin.Comment&Frames.&Frame\ Quote\ Tilde  :CommentFrameQuoteTilde ''<Left>
 amenu .170.1 &Plugin.Comment&Frames.&-Rights- :
-amenu .170.1 &Plugin.Comment&Frames.&Right\ Custom        :CommentRightCustom '#','',80,5,'~',1,''<Left>
+amenu .170.1 &Plugin.Comment&Frames.&Right\ Custom        :CommentRightCustom '#','',s:fw,5,'~',1,''<Left>
 amenu .170.1 &Plugin.Comment&Frames.&Right\ Hash          :CommentRightHash ''<Left>
 amenu .170.1 &Plugin.Comment&Frames.&Right\ Slashes       :CommentRightSlashes ''<Left>
 amenu .170.1 &Plugin.Comment&Frames.&Right\ Slash\ Stars  :CommentRightSlashStar ''<Left>
