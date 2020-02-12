@@ -193,18 +193,19 @@ call s:MapKeys('ni', 'frq', ':CommentRightQuote ""<Left>')
 "}}}
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Plugin Menu Creation {{{ ~~~~~
-amenu .170.1 &Plugin.Comment&Frames.Frame\ &Custom<Tab>fcu          <Leader>fcu
-amenu .170.1 &Plugin.Comment&Frames.Frame\ &HashDash<Tab>fch        <Leader>fch
-amenu .170.1 &Plugin.Comment&Frames.Frame\ Hash&Equal<Tab>fcH       <Leader>fcH
-amenu .170.1 &Plugin.Comment&Frames.Frame\ &Slashes<Tab>fcs         <Leader>fcs
-amenu .170.1 &Plugin.Comment&Frames.Frame\ &Slash\ Star<Tab>fcs     <Leader>fcS
-amenu .170.1 &Plugin.Comment&Frames.Frame\ &QuoteDash<Tab>fcq       <Leader>fcq
-amenu .170.1 &Plugin.Comment&Frames.Frame\ Quote&Tilde<Tab>fcQ      <Leader>fcQ
-amenu .170.1 &Plugin.Comment&Frames.-Rights- :
-amenu .170.1 &Plugin.Comment&Frames.Right\ &Custom<Tab>frc          <Leader>frc
-amenu .170.1 &Plugin.Comment&Frames.Right\ &Hash<Tab>frh            <Leader>frh
-amenu .170.1 &Plugin.Comment&Frames.Right\ &Slashes<Tab>frs         <Leader>frs
-amenu .170.1 &Plugin.Comment&Frames.Right\ &Slash\ Stars<Tab>frS    <Leader>frS
-amenu .170.1 &Plugin.Comment&Frames.Right\ &Quote<Tab>frq           <Leader>frq
+unmenu! Plugin.Comment&Frames.
+amenu .170.1 &Plugin.Comment&Frames.&Frame\ Custom        :CommentFrameCustom '#','#',80,'=','-',3,''<Left>
+amenu .170.1 &Plugin.Comment&Frames.&Frame\ Hash\ Dash    :CommentFrameHashDash ''<Left>
+amenu .170.1 &Plugin.Comment&Frames.&Frame\ Hash\ Equal   :CommentFrameHashEqual ''<Left>
+amenu .170.1 &Plugin.Comment&Frames.&Frame\ Slashes       :CommentFrameSlashes ''<Left>
+amenu .170.1 &Plugin.Comment&Frames.&Frame\ Slash\ Star   :CommentFrameSlashStar ''<Left>
+amenu .170.1 &Plugin.Comment&Frames.&Frame\ Quote\ Dash   :CommentFrameQuoteDash ''<Left>
+amenu .170.1 &Plugin.Comment&Frames.&Frame\ Quote\ Tilde  :CommentFrameQuoteTilde ''<Left>
+amenu .170.1 &Plugin.Comment&Frames.&-Rights- :
+amenu .170.1 &Plugin.Comment&Frames.&Right\ Custom        :CommentRightCustom '#','',80,5,'~',1,''<Left>
+amenu .170.1 &Plugin.Comment&Frames.&Right\ Hash          :CommentRightHash ''<Left>
+amenu .170.1 &Plugin.Comment&Frames.&Right\ Slashes       :CommentRightSlashes ''<Left>
+amenu .170.1 &Plugin.Comment&Frames.&Right\ Slash\ Stars  :CommentRightSlashStar ''<Left>
+amenu .170.1 &Plugin.Comment&Frames.&Right\ Quote         :CommentRightQuote ''<Left>
 "}}}
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~}}}
