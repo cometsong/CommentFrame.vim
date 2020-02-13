@@ -32,7 +32,11 @@
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 
 Plugin Configuration:
-  `g:CommentFrame_SkipDefaultMappings`        let =1 to not use default keymaps
+  `g:CommentFrame_SkipDefaultMappings`   let =1 to not use default keymaps
+
+  `g:CommentFrame_TextWidth`             set global default width of comment
+                                         frames and lines; always modifiable
+					 using the `...Custom` functions
 
 Basic Usage:
 
